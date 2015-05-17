@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('sb2AngularApp'));
+  beforeEach(module('StoriesBy2'));
 
   var AboutCtrl,
     scope;

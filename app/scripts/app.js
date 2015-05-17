@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name sb2AngularApp
+ * @name StoriesBy2
  * @description
- * # sb2AngularApp
+ * # StoriesBy2
  *
  * Main module of the application.
  */
 angular
-  .module('sb2AngularApp', [
+  .module('StoriesBy2', [
     'ngRoute'
   ])
   .config(function ($routeProvider) {

@@ -10,5 +10,5 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "sb2AngularApp"
+  "moduleName": "StoriesBy2"
 }
