@@ -10,7 +10,7 @@
  */
 angular
   .module('StoriesBy2', [
-    'ngRoute'
+    'ngRoute', 'app.config'
   ])
   .config(function ($routeProvider) {
     $routeProvider
