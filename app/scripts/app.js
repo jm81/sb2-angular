@@ -26,6 +26,10 @@ angular
         templateUrl: 'views/stories/index.html',
         controller: 'StoriesIndexCtrl'
       })
+      .when('/stories/:id', {
+        templateUrl: 'views/stories/show.html',
+        controller: 'StoriesShowCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
