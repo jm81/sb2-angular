@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('app.config', [])
-  .value('app.config', {
+angular.module('StoriesBy2').constant(
+  'sb2Config', {
     apiUrl: 'http://localhost:5004/'
-  });
+  }
+);

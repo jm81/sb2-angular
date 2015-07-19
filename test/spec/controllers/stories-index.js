@@ -5,7 +5,6 @@ describe('Controller: StoriesIndexCtrl', function () {
 
   // load the controller's module
   beforeEach(module('StoriesBy2'));
-  beforeEach(module('app.config'));
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($injector) {
@@ -19,7 +18,7 @@ describe('Controller: StoriesIndexCtrl', function () {
       return $controller('StoriesIndexCtrl', { '$scope' : $rootScope });
     };
 
-    config = $injector.get('app.config');
+    config = $injector.get('sb2Config');
   }));
 
   afterEach(function() {

@@ -5,13 +5,12 @@ describe('Resource: Story', function () {
 
   // load the controller's module
   beforeEach(module('StoriesBy2'));
-  beforeEach(module('app.config'));
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($injector) {
     Story = $injector.get('Story');
     $httpBackend = $injector.get('$httpBackend');
-    config = $injector.get('app.config');
+    config = $injector.get('sb2Config');
   }));
 
   afterEach(function() {
