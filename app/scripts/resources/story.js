@@ -15,13 +15,13 @@ angular.module('StoriesBy2')
           query: {
             isArray: true,
             method: 'GET',
-            transformResponse: function(data, headers) {
+            transformResponse: function(data) {
               return angular.fromJson(data).response;
             }
           },
           get: {
             method: 'GET',
-            transformResponse: function(data, headers) {
+            transformResponse: function(data) {
               return angular.fromJson(data).response;
             }
           }
