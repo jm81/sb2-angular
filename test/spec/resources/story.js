@@ -3,10 +3,10 @@
 describe('Resource: Story', function () {
   var $httpBackend, Story, config;
 
-  // load the controller's module
+  // load the resource's module
   beforeEach(module('StoriesBy2'));
 
-  // Initialize the controller and a mock scope
+  // Initialize the resource and a mock scope
   beforeEach(inject(function($injector) {
     Story = $injector.get('Story');
     $httpBackend = $injector.get('$httpBackend');
