@@ -36,11 +36,11 @@ describe('Factory: Session', function() {
 
   describe('logout', function() {
     it('posts logout to API', function() {
-      var currentSession = { token: 'ABC' }
+      var currentSession = { token: 'ABC' };
 
       $httpBackend.expectPOST(
         config.apiUrl + '1/auth/logout', undefined, function(headers) {
-          return headers['Authorization'] == 'Bearer ABC';
+          return headers.Authorization === 'Bearer ABC';
         }).respond(200);
 
       Session.logout(currentSession);
