@@ -35,7 +35,7 @@ describe('Controller: StoriesIndexCtrl', function () {
         '],"count":2}'
       );
 
-    var controller = createController();
+    createController();
     $httpBackend.flush();
     expect($rootScope.stories.length).toBe(2);
     expect($rootScope.stories[0].body).toBe('a b');
