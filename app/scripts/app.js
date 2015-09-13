@@ -22,6 +22,14 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .when('/logout', {
+        template: null,
+        controller: 'LogoutCtrl'
+      })
       .when('/stories', {
         templateUrl: 'views/stories/index.html',
         controller: 'StoriesIndexCtrl'

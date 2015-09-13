@@ -43,13 +43,24 @@
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/stories">Stories</a></li>
             </ul>
+
+            <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
+              <li>
+                <a ng-href="#/" ng-bind="currentSession.display_name"></a>
+              </li>
+              <li><a ng-href="#/logout">Logout</a></li>
+            </ul>
+
+            <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+              <li><a href="/#/login">Login</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
     <div class="container">
-    <div ng-view=""></div>
+      <div ng-view=""></div>
     </div>
 
     <div class="footer">
@@ -90,6 +101,8 @@
         <script src="scripts/controllers/application.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/logout.js"></script>
         <script src="scripts/controllers/stories-index.js"></script>
         <script src="scripts/controllers/stories-show.js"></script>
         <!-- endbuild -->
