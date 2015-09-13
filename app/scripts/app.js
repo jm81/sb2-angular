@@ -10,7 +10,7 @@
  */
 angular
   .module('StoriesBy2', [
-    'ngRoute', 'ngResource', 'satellizer'
+    'ngRoute', 'ngResource', 'satellizer', 'toastr'
   ])
   .config(function ($routeProvider) {
     $routeProvider
