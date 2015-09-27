@@ -1,11 +1,10 @@
 'use strict';
 
 describe('Controller: StoriesShowCtrl', function () {
-  var $httpBackend, $rootScope, createController, config;
+  var $httpBackend, $rootScope, $routeParams, createController, config;
 
   // load the controller's module
   beforeEach(module('StoriesBy2'));
-  beforeEach(module('app.config'));
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($injector) {
@@ -22,7 +21,7 @@ describe('Controller: StoriesShowCtrl', function () {
       });
     };
 
-    config = $injector.get('app.config');
+    config = $injector.get('sb2Config');
   }));
 
   afterEach(function() {
@@ -38,7 +37,7 @@ describe('Controller: StoriesShowCtrl', function () {
         '}'
       );
 
-    var controller = createController();
+    createController();
     $httpBackend.flush();
     expect($rootScope.story.body).toBe('a b');
   });
