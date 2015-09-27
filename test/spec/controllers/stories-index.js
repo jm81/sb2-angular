@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller: StoriesIndexCtrl', function () {
-  var $httpBackend, $rootScope, createController, config;
+  var $httpBackend, $rootScope, createController, config, author;
 
   // load the controller's module
   beforeEach(module('StoriesBy2'));
@@ -19,6 +19,7 @@ describe('Controller: StoriesIndexCtrl', function () {
     };
 
     config = $injector.get('sb2Config');
+    author = '"author":{"id":1,"display_name":"My Name","handle":"author1"}';
   }));
 
   afterEach(function() {
@@ -30,8 +31,8 @@ describe('Controller: StoriesIndexCtrl', function () {
     $httpBackend.expect('GET', config.apiUrl + '1/stories')
       .respond(
         200, '{"response":[' +
-          '{"id":1,"parent_id":null,"body":"a b","level":1,"words":2},' +
-          '{"id":2,"parent_id":1,"body":"a c b d","level":2,"words":4}' +
+          '{"id":1,"body":"a b","level":1,"words":2,' + author + '},' +
+          '{"id":2,"body":"a c b d","level":2,"words":4,' + author + '}' +
         '],"count":2}'
       );
 

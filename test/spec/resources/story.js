@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Resource: Story', function () {
-  var $httpBackend, Story, config;
+  var $httpBackend, Story, config, author;
 
   // load the resource's module
   beforeEach(module('StoriesBy2'));
@@ -11,6 +11,7 @@ describe('Resource: Story', function () {
     Story = $injector.get('Story');
     $httpBackend = $injector.get('$httpBackend');
     config = $injector.get('sb2Config');
+    author = '"author":{"id":1,"display_name":"My Name","handle":"author1"}';
   }));
 
   afterEach(function() {
@@ -23,8 +24,8 @@ describe('Resource: Story', function () {
       $httpBackend.expect('GET', config.apiUrl + '1/stories')
         .respond(
           200, '{"response":[' +
-            '{"id":1,"parent_id":null,"body":"a b","level":1,"words":2},' +
-            '{"id":2,"parent_id":1,"body":"a c b d","level":2,"words":4}' +
+            '{"id":1,"body":"a b","level":1,"words":2,' + author + '},' +
+            '{"id":2,"body":"a c b d","level":2,"words":4,' + author + '}' +
           '],"count":2}'
         );
 
@@ -41,13 +42,14 @@ describe('Resource: Story', function () {
       $httpBackend.expect('GET', config.apiUrl + '1/stories/2')
         .respond(
           200, '{"response":' +
-            '{"id":2,"parent_id":1,"body":"a c b d","level":2,"words":4}' +
+            '{"id":2,"body":"a c b d","level":2,"words":4,' + author + '}' +
           '}'
         );
 
       var story = Story.get({id: 2});
       $httpBackend.flush();
       expect(story.body).toBe('a c b d');
+      expect(story.author.handle).toBe('author1');
     });
   });
 });
