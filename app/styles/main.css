@@ -85,3 +85,11 @@ body {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+article.story header .author {
+  font-style: italic;
+}
+
+article.story main {
+  font-size: 1.3em;
+}
