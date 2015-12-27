@@ -30,6 +30,10 @@ angular
         template: null,
         controller: 'LogoutCtrl'
       })
+      .when('/profiles/new', {
+        templateUrl: 'views/profiles/new.html',
+        controller: 'ProfilesCreateCtrl'
+      })
       .when('/stories', {
         templateUrl: 'views/stories/index.html',
         controller: 'StoriesIndexCtrl'

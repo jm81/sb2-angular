@@ -1,0 +1,37 @@
+<div class="new-profile">
+  <div class="errors alert alert-warning" ng-if="error">
+    {{error.error_description}}
+    <ul class="error-messages" ng-if="error.messages">
+      <li ng-repeat="(field, message) in error.messages">
+        {{field}} {{message.join(', ')}}
+      </li>
+    </ul>
+  </div>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="profile-handle" class="col-sm-3 control-label">Handle</label>
+      <div class="col-sm-9">
+        <input type="text" id="profile-handle"
+          ng-model="profile.handle" placeholder="Handle" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="profile-display-name" class="col-sm-3 control-label">
+        Display Name
+      </label>
+      <div class="col-sm-9">
+        <input type="text" id="profile-display-name"
+          ng-model="profile.display_name"
+          placeholder="Display Name" class="form-control">
+      </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3">
+      <button type="submit" class="btn btn-default"
+        ng-click="createProfile(profile)" ng-disabled="updating">
+        {{updating ? 'Saving...' : 'Save Profile'}}
+      </button>
+    </div>
+  </div>
+</div>
+
