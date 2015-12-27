@@ -27,7 +27,7 @@ describe('Resource: Profile', function () {
           '}'
         );
 
-      var profile = Profile.save(
+      Profile.save(
         {display_name: 'My Name', handle: 'handle02'}
       );
       $httpBackend.flush();
