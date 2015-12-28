@@ -12,6 +12,10 @@ angular.module('StoriesBy2')
       function ($scope, $routeParams, $location, toastr, Profile) {
     $scope.profile = new Profile();
 
+    // Default new name to session display_name.
+    if ($scope.currentSession)
+      $scope.profile.display_name = $scope.currentSession.display_name;
+
     $scope.createProfile = function(profile) {
       $scope.error = null;
       $scope.updating = true;

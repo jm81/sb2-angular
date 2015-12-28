@@ -28,9 +28,12 @@ describe('Controller: ProfilesCreateCtrl', function() {
   });
 
   it('sets up a new Profile', function() {
+    $rootScope.currentSession =
+      {user_id: 3, display_name: 'Yoda', token: 'ABC'};
     expect($rootScope.profile).toBeUndefined();
     createController();
-    expect($rootScope.profile).toBeDefined();
+    expect($rootScope.profile.handle).toBeUndefined();
+    expect($rootScope.profile.display_name).toBe('Yoda');
   });
 
   describe('createProfile', function() {
