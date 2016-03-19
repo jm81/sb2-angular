@@ -15,8 +15,9 @@ angular.module('StoriesBy2')
           toastr.success('You have successfully signed in with ' + provider);
           Session.get().then(function(data) {
             $scope.setCurrentSession(data);
-            if (!($scope.currentSession.profile_id))
+            if (!($scope.currentSession.profile_id)) {
               $location.path('/profiles/new');
+            }
           });
         });
       };

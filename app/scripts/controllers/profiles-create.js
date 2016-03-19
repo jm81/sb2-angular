@@ -13,8 +13,9 @@ angular.module('StoriesBy2')
     $scope.profile = new Profile();
 
     // Default new name to session display_name.
-    if ($scope.currentSession)
+    if ($scope.currentSession) {
       $scope.profile.display_name = $scope.currentSession.display_name;
+    }
 
     $scope.createProfile = function(profile) {
       $scope.error = null;
