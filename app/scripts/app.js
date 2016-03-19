@@ -38,6 +38,16 @@ angular
         templateUrl: 'views/stories/index.html',
         controller: 'StoriesIndexCtrl'
       })
+      .when('/stories/plus/:id', {
+        templateUrl: 'views/stories/new.html',
+        controller: 'StoriesCreateCtrl',
+        resolve: { direction: function() { return '+'; } }
+      })
+      .when('/stories/minus/:id', {
+        templateUrl: 'views/stories/new.html',
+        controller: 'StoriesCreateCtrl',
+        resolve: { direction: function() { return '-'; } }
+      })
       .when('/stories/:id', {
         templateUrl: 'views/stories/show.html',
         controller: 'StoriesShowCtrl'
