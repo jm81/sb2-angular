@@ -24,6 +24,10 @@ describe('Controller: StoriesCreateCtrl', function() {
     };
 
     config = $injector.get('sb2Config');
+
+    $httpBackend
+      .when('POST', config.apiUrl + '1/stories/word_count')
+      .respond(200, '{"response":{"actual":1}}');
   }));
 
   afterEach(function() {
@@ -34,6 +38,8 @@ describe('Controller: StoriesCreateCtrl', function() {
   it('sets up a new Story', function() {
     expect($rootScope.story).toBeUndefined();
     createController();
+    $httpBackend.flush();
+
     expect($rootScope.story.direction).toBe('plus');
     expect($rootScope.story.parent_id).toBe(2);
     expect($rootScope.story.body).toBeUndefined();
@@ -83,5 +89,60 @@ describe('Controller: StoriesCreateCtrl', function() {
       });
     });
   });
-});
 
+  describe('bodyChanged', function() {
+    it('sets changed on $scope', function() {
+      createController();
+      $httpBackend.flush();
+
+      $rootScope.changed = false;
+      expect($rootScope.changed).toBe(false);
+      $rootScope.bodyChanged();
+      expect($rootScope.changed).toBe(true);
+    });
+  });
+
+  describe('checkWordCount', function() {
+    it('gets wordCount data', function() {
+      createController();
+      $httpBackend.flush();
+
+      $rootScope.story.body = 'a d';
+      $rootScope.changed = true;
+
+      $httpBackend.expect(
+        'POST', config.apiUrl + '1/stories/word_count',
+        {parent_id: 2, direction: 'plus', body: 'a d'}
+      )
+      .respond(
+        200,
+        '{"response":' +
+          '{"level":2,"actual":2,"expected":4,"range":"4..4","type":"none"}' +
+        '}'
+      );
+
+      $rootScope.checkWordCount($rootScope.story);
+      $httpBackend.flush();
+
+      expect($rootScope.wordCount.actual).toBe(2);
+      expect($rootScope.wordCount.expected).toBe(4);
+      expect($rootScope.wordCount.type).toBe('none');
+      expect($rootScope.story.level).toBe(2);
+    });
+
+    describe('scope not changed', function() {
+      it('does not get wordCount data', function() {
+        createController();
+        $httpBackend.flush();
+
+        expect($rootScope.story.level).toBe(undefined);
+        $rootScope.story.body = 'a c';
+        $rootScope.story.level = 5;
+        $rootScope.changed = false;
+        $rootScope.checkWordCount($rootScope.story);
+        $httpBackend.verifyNoOutstandingRequest();
+        expect($rootScope.story.level).toBe(5);
+      });
+    });
+  });
+});
